@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta – Adema Sistemas para Agustina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family-sans: 'Inter', sans-serif;
+            --color-background: #f8f9fa;
+            --color-surface: #ffffff;
+            --color-text-primary: #1e293b;
+            --color-text-secondary: #475569;
+            --color-accent: #0f172a;
+            --color-highlight: #2563eb;
+            --color-border: #e2e8f0;
+            --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --border-radius: 12px;
+        }
+        body { font-family:var(--font-family-sans); margin:0; padding:40px 20px; background-color:var(--color-background); color:var(--color-text-primary); line-height:1.6; }
+        .container { max-width:900px; margin:0 auto; background-color:var(--color-surface); padding:60px; box-shadow:var(--shadow); border-radius:var(--border-radius); }
+        
+        /* Header */
+        header { text-align:center; margin-bottom:50px; border-bottom: 2px solid var(--color-background); padding-bottom: 30px; }
+        header img { max-width:180px; margin-bottom:20px; }
+        header h1 { color:var(--color-accent); margin:0; font-size:2rem; font-weight:800; letter-spacing:-0.5px; }
+        header p { color:var(--color-text-secondary); font-size:1.1rem; margin-top:10px; }
+
+        /* Content */
+        h2 { color:var(--color-accent); margin-top:40px; margin-bottom:20px; font-size:1.4rem; font-weight:700; display: flex; align-items: center; gap: 10px; }
+        h2::before { content: ''; display: block; width: 6px; height: 24px; background: var(--color-highlight); border-radius: 4px; }
+        
+        p { margin-bottom:15px; color:var(--color-text-secondary); }
+        strong { color:var(--color-text-primary); font-weight:600; }
+        
+        /* Table Styles */
+        .table-responsive { overflow-x: auto; margin-top: 30px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); }
+        table { width: 100%; border-collapse: collapse; text-align: left; background-color: white; }
+        th, td { padding: 16px 20px; border-bottom: 1px solid var(--color-border); }
+        th { background-color: #f8fafc; color: var(--color-accent); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; border-top: 1px solid var(--color-border); }
+        td { font-size: 0.95rem; color: var(--color-text-secondary); vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #f1f5f9; }
+        td:first-child { font-weight: 500; color: var(--color-text-primary); width: 35%; }
+        
+        /* Status Badges */
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+        .badge-success { background-color: #dcfce7; color: #166534; }
+        .badge-warning { background-color: #fef08a; color: #854d0e; }
+
+        /* Pricing Cards */
+        .pricing-container { display: flex; gap: 20px; margin-top: 30px; margin-bottom: 30px; }
+        .pricing-card { flex: 1; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 25px; background: #fff; transition: transform 0.2s; position: relative; overflow: hidden; }
+        .pricing-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--color-highlight); }
+        .pricing-card.recommended { border: 2px solid var(--color-highlight); background: #f0f7ff; }
+        .pricing-card.recommended::after { content: 'Más Elegido'; position: absolute; top: 0; right: 0; background: var(--color-highlight); color: white; padding: 4px 12px; font-size: 0.75rem; font-weight: bold; border-bottom-left-radius: 8px; }
+        
+        .card-title { font-size: 1.2rem; font-weight: 800; color: var(--color-accent); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .card-price { font-size: 2rem; font-weight: 800; color: var(--color-highlight); margin-bottom: 5px; }
+        .card-subtext { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 15px; display: block; }
+        .card-detail { font-size: 0.95rem; margin-bottom: 10px; display: block; }
+        .card-detail strong { color: var(--color-accent); }
+
+        /* Info Box */
+        .info-box { background-color: #f1f5f9; padding: 20px; border-radius: 8px; border-left: 4px solid var(--color-accent); margin-top: 30px; }
+        .impact-box { background-color: #eef2ff; padding: 25px; border-radius: 8px; border: 1px solid #c7d2fe; margin-top: 40px; }
+
+        .footer { text-align:center; margin-top:60px; padding-top:30px; border-top:1px solid var(--color-border); font-size:0.9rem; color:#94a3b8; }
+
+        @media (max-width: 768px) {
+            .container { padding: 30px 20px; }
+            .pricing-container { flex-direction: column; }
+            header h1 { font-size: 1.8rem; }
+            td:first-child { width: 100%; display: block; border-bottom: none; padding-bottom: 5px; }
+            td:last-child { display: block; padding-top: 0; }
+            tr { border-bottom: 1px solid var(--color-border); display: block; }
+            tr:last-child { border-bottom: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="https://ademasistemas.com/static/logo.png" alt="Logo Adema Sistemas">
+        <h1>ADEMA SISTEMAS</h1>
+        <p>Propuesta de Software: ADEstock para <strong>Agustina (Rosario)</strong></p>
+    </header>
+
+    <main>
+        <p>¡Hola, <strong>Agustina</strong>! Qué gran iniciativa la apertura de tu dietética en Rosario. Sabemos que el rubro requiere precisión, especialmente cuando se trata de manejar alimentos a granel, fraccionar y mantener los precios de lista al día.</p>
+        
+        <p>Para tu modelo de negocio, <strong>ADEstock</strong> es una solución ideal. De hecho, el sistema cuenta con un comando de configuración rápida (cuando instalás la app) que en cuestión de minutos carga un catálogo inicial con proveedores, escalas de venta (por kilos, gramos o unidades) e incluso recetas de fabricación propia.</p>
+        
+        <p>A continuación, te detallo cómo nuestra plataforma cubre cada una de las necesidades específicas de tu nuevo negocio para que arranques con todo el control desde el día uno.</p>
+
+        <h2>Análisis de Requerimientos y Soluciones</h2>
+        
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Requerimiento (Consulta)</th>
+                        <th>Cómo lo soluciona ADEstock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Selección de productos editable</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Al momento de vender, el sistema de Punto de Venta (POS) permite buscar, seleccionar y ajustar las cantidades de los productos de manera dinámica.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Carga automática de precios</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Los precios y costos se actualizan y cargan automáticamente al seleccionar un producto en el carrito, soportando distintas variantes y presentaciones (ej: 100g, 250g, 1kg).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Búsqueda rápida y operación optimizada para uso con teclado</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Permite realizar búsquedas rápidas por nombre o código en el POS y es 100% compatible con lectores de código de barras para una operatoria sumamente ágil en el mostrador.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Control y descuento automático de stock</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Todo lo que comprás entra (+) y todo lo que vendés sale (-). Al confirmar la venta, el stock se descuenta al instante, sin importar si vendiste por gramo o por bulto cerrado.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Reposición automática ante anulación de comprobantes</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            El sistema permite gestionar anulaciones, devoluciones y ajustes de inventario, generando Notas de Crédito/Débito y reintegrando la mercadería al depósito de forma automática.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Consulta de precios y visualización de stock</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Puedes visualizar el inventario real en todo momento. En el POS se puede ver el stock disponible de cada producto o de sus variantes, así como alertas de stock mínimo.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Identificación de productos activos</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            En el catálogo podrás habilitar o deshabilitar fácilmente qué productos y variantes están activos para la venta o control de stock, ideal para productos de temporada.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Historial, registro y filtros de ventas</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Registra absolutamente toda la trazabilidad por cada cajero y turno. El panel administrador (Dashboard) cuenta con filtros precisos por fechas.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Emisión de reportes</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Permite descargar un reporte consolidado en Excel que muestra de manera gerencial: compras, ventas, gastos operativos, mermas y un top de productos más vendidos.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Módulo de cuentas corrientes (Ventas a cuenta)</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Puedes asociar las ventas a un cliente particular bajo la modalidad de "Cuenta Corriente" en lugar de cobrar en efectivo o tarjeta.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Imputación de pagos parciales</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Permite registrar múltiples "adelantos" de dinero, dejando un saldo a favor que luego el sistema descuenta inteligentemente al momento de pagar una deuda.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cálculo automático de saldo pendiente</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Al entrar al perfil del cliente, el sistema calcula automáticamente el saldo neto (Deuda pendiente real menos el saldo a favor/pagos ingresados).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Generación de comprobantes en PDF y anulación</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Si decides no usar una comandera térmica, el sistema te abre automáticamente el ticket/comprobante de venta en formato PDF clásico. También emite recibos de cobro y comprobantes de adelantos/anulaciones.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Integración con impresora térmica</td>
+                        <td>
+                            <span class="badge badge-success">Cubre</span><br>
+                            Tiene una función exclusiva de Agente Local de Impresión. Si activas el uso de comandera, manda la impresión silenciosa y directa por USB o Red a la etiquetadora/impresora de tickets sin abrir ningún PDF previo.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Automatización de reportes y notificaciones por correo</td>
+                        <td>
+                            <span class="badge" style="background-color: #e0f2fe; color: #0369a1;">En tiempo real</span><br>
+                            En lugar de depender de correos electrónicos automáticos o notificaciones externas que suelen perderse, ADEstock centraliza toda tu información en un Panel de Control (Dashboard) en tiempo real. Podés monitorear la salud de tu negocio y descargar los reportes en Excel en el momento exacto que lo decidas, manteniendo un control proactivo y sin spam.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="impact-box">
+            <h3 style="margin-top:0; color:var(--color-accent); font-size: 1.2rem;">🌟 Resumen del impacto comercial</h3>
+            <p style="margin-bottom:0; color:var(--color-text-primary);">ADEstock no es solo un sistema para facturar: es una herramienta para controlar el flujo real del negocio con trazabilidad completa. Podrás estar tranquila de que desde que ingresa un kilo de almendras hasta que se cobra en tu cuenta, todo quedará registrado, permitiéndote al final del día cerrar la caja conociendo el efectivo exacto esperado y tus verdaderas ganancias.</p>
+        </div>
+
+        <div style="margin-top: 30px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+            <h3 style="margin-top: 0; margin-bottom: 12px; color: var(--color-accent);">Caso real: Ceci</h3>
+            <p style="margin: 0 0 16px 0; color: var(--color-text-primary); line-height: 1.6;">Ceci pasó de manejar todo de forma manual a controlar compras, stock y caja en un solo lugar.<br>Con ese orden, empezó a tomar decisiones con números reales y a reducir pérdidas mes a mes.</p>
+            <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+                <iframe
+                    src="https://www.youtube.com/embed/NqFlyOQWE74"
+                    title="Caso de Ceci - ADEstock"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <h2>Planes de Inversión</h2>
+        <p>Elegí cómo querés trabajar. Aceptamos Mercado Pago, Transferencia o Efectivo.</p>
+
+        <div class="pricing-container">
+            <div class="pricing-card recommended">
+                <div class="card-title">Plan Cloud</div>
+                <span class="card-subtext" style="display:block; margin-bottom:15px;">Alojado en la nube. Acceso total.</span>
+                <div class="card-price" style="font-size: 1.5rem;">ARS $60.000 <small style="font-size:0.6em; color:#64748b;">/ mes</small></div>
+                
+                <div style="background:#e0f2fe; padding:10px; border-radius:6px; font-size:0.9em; text-align:center; color:#0369a1; margin-top: 15px; margin-bottom: 15px;">
+                    <strong>Pago Inicial (Setup):</strong><br>
+                    Bonificado por febrero (Oferta del mes)
+                </div>
+
+                <span class="card-detail">✓ <strong>Hosting Incluido</strong></span>
+                <span class="card-detail">✓ <strong>Subdominio o Dominio Propio</strong></span>
+                <span class="card-detail">✓ <strong>Backups Cloud Automáticos</strong></span>
+                <a href="https://ademasistemas.com/cliente/signup/" style="display:block; text-align:center; margin-top:15px; text-decoration:none; color:var(--color-highlight); font-weight:bold;">Siguiente Paso</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="card-title">Licencia Mensual</div>
+                <span class="card-subtext" style="display:block; margin-bottom:15px;">Ideal para comenzar con baja inversión.</span>
+                <div class="card-price" style="font-size: 1.5rem;">ARS $45.000 <small style="font-size:0.6em; color:#64748b;">/ mes</small></div>
+                <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px; text-align: center; font-weight: 500;">Renovación cada 30 días</div>
+                
+                <span class="card-detail">✓ <strong>Calculador de Margen Real por Producto</strong></span>
+                <span class="card-detail">✓ <strong>Instalación Local (Tu PC)</strong></span>
+                <span class="card-detail">✓ <strong>Acceso Red Local (WiFi)</strong></span>
+                <span class="card-detail">✓ <strong>Actualizaciones incluidas</strong></span>
+                <span class="card-detail">✓ <strong>Soporte técnico por WhatsApp</strong></span>
+                <a href="https://ademasistemas.com/cliente/signup/" style="display:block; text-align:center; margin-top:15px; text-decoration:none; color:var(--color-highlight); font-weight:bold;">Siguiente Paso</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="card-title">Licencia Anual</div>
+                <span class="card-subtext" style="display:block; margin-bottom:15px;">La mejor relación costo-beneficio.</span>
+                <div class="card-price" style="font-size: 1.5rem;">ARS $450.000 <small style="font-size:0.6em; color:#64748b;">/ año</small></div>
+                <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px; text-align: center; font-weight: 500;">12 meses de uso continuo</div>
+                
+                <span class="card-detail">✓ <strong>Calculador de Margen Real por Producto</strong></span>
+                <span class="card-detail">✓ <strong>Instalación Local (Tu PC)</strong></span>
+                <span class="card-detail">✓ <strong>Acceso Red Local (WiFi)</strong></span>
+                <span class="card-detail">✓ <strong>Actualizaciones incluidas</strong></span>
+                <span class="card-detail">✓ <strong>Soporte técnico por WhatsApp</strong></span>
+                <a href="https://ademasistemas.com/cliente/signup/" style="display:block; text-align:center; margin-top:15px; text-decoration:none; color:var(--color-highlight); font-weight:bold;">Siguiente Paso</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; background: #f8fafc; padding: 30px; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--color-accent);">¿Agustina, necesitas algo a medida?</h3>
+            <p style="margin-bottom: 15px;">Desarrollamos funcionalidades específicas, reportes personalizados o integraciones con APIs para que el sistema se adapte 100% a la visión de tu dietética.</p>
+            <p style="font-size: 1.2rem; font-weight: bold; color: var(--color-highlight); margin-bottom: 20px;">Valor hora desarrollo: Consultar</p>
+            <a href="https://wa.me/5491127888995" style="display: inline-block; background: #25d366; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">Hablar por WhatsApp</a>
+        </div>
+
+    </main>
+
+    <div class="footer">
+        <p><strong>ADEstock</strong> by <a href="https://ademasistemas.com">ADEMA Sistemas</a><br>El Sistema de Gestión Integral para Dietéticas.</p>
+        <p>Agustina + ADEstock = Negocio Ordenado.</p>
+    </div>
+</div>
+</body>
+</html>
